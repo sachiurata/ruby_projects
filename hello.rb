@@ -24,8 +24,7 @@ class Yakudoshi < Age
  attr_accessor :sex
 
  def initialize(name,birth_year,sex)
-   self.name = name
-   self.birth_year = birth_year
+   super(name, birth_year)
    self.sex = sex
  end
  
@@ -110,6 +109,123 @@ yamada.say
 suzuki = Bmi.new("鈴木", "田中", 45, 1.55)
 suzuki.bmi
 suzuki.say
+
+
+#はらぺこあおむし
+class Catapillar
+  attr_accessor :day
+  attr_accessor :fruit
+  attr_accessor :number
+
+  def initialize(day, fruit, number)
+    self.day = day
+    self.fruit = fruit
+    self.number = number
+  end
+  def eat
+    puts "#{self.day}、#{self.fruit}を#{self.number}食べました。それでもおなかはぺっこぺこ。"
+  end
+end
+
+day1 = Catapillar.new("月曜日","りんご","ひとつ")
+day1.eat
+day2 = Catapillar.new("火曜日","なし","ふたつ")
+day2.eat
+day3 = Catapillar.new("水曜日","すもも","みっつ")
+day3.eat
+day4 = Catapillar.new("木曜日","いちご","よっつ")
+day4.eat
+day5 = Catapillar.new("金曜日","オレンジ","いつつ")
+day5.eat
+
+
+#大きなかぶ
+class Grandma
+  attr_accessor :first
+  attr_accessor :second
+  attr_accessor :but
+  def initialize(first,second,but)
+    self.first = first
+    self.second = second
+    self.but = but
+  end
+  def grandpa
+    puts "かぶを#{first}が引っぱって、#{first}を#{second}が引っぱって、"
+  end
+  def didnot
+    puts "「うんとこしょ、どっこいしょ」#{but}、かぶはぬけません。"
+  end
+end
+
+character1 = Grandma.new("おじいさん","おばあさん","それでも")
+character1.grandpa
+character1.didnot
+
+class Grand_daughter < Grandma
+  attr_accessor :first
+  attr_accessor :second
+  attr_accessor :third
+  attr_accessor :but
+  def initialize(first,second,third,but)
+    super(first,second,but)
+    self.third = third
+  end
+  def grandma
+    puts "#{second}を#{third}が引っぱって、"
+  end
+end
+
+character2 = Grand_daughter.new("おじいさん","おばあさん","まごむすめ","やっぱり")
+character2.grandpa
+character2.grandma
+character2.didnot
+
+class Dog < Grand_daughter
+ attr_accessor :first
+ attr_accessor :second
+ attr_accessor :third
+ attr_accessor :forth
+ attr_accessor :but
+ 
+ def initialize(first,second,third,forth,but)
+   super(first,second,third,but)
+   self.forth = forth
+ end
+ def grand_daughter
+   puts "#{third}を#{forth}を引っぱって、"
+ end
+end
+
+character3 = Dog.new("おじいさん","おばあさん","まごむすめ","犬","まだまだ")
+character3.grandpa
+character3.grandma
+character3.grand_daughter
+character3.didnot
+
+class Cat < Dog
+ attr_accessor :first
+ attr_accessor :second
+ attr_accessor :third
+ attr_accessor :forth
+ attr_accessor :fifth
+ attr_accessor :but
+ 
+ def initialize(first,second,third,forth,fifth,but)
+   super(first,second,third,forth,but)
+   self.fifth = fifth
+   
+   def dog
+     puts "#{forth}を#{fifth}が引っぱって、"
+   end
+ end
+end
+
+character4 = Cat.new("おじいさん","おばあさん","まごむすめ","犬","ねこ","なかなか")
+character4.grandpa
+character4.grandma
+character4.grand_daughter
+character4.dog
+character4.didnot
 
 
 #メンタリング3/6
