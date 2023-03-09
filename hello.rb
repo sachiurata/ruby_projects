@@ -149,6 +149,9 @@ class Grandma
     self.second = second
     self.but = but
   end
+  def call
+    puts "#{first}は#{second}をよんできました。"
+  end
   def grandpa
     puts "かぶを#{first}が引っぱって、#{first}を#{second}が引っぱって、"
   end
@@ -158,6 +161,7 @@ class Grandma
 end
 
 character1 = Grandma.new("おじいさん","おばあさん","それでも")
+character1.call
 character1.grandpa
 character1.didnot
 
@@ -170,12 +174,16 @@ class Grand_daughter < Grandma
     super(first,second,but)
     self.third = third
   end
+  def call
+    puts "#{second}は#{third}をよんできました。"
+  end
   def grandma
     puts "#{second}を#{third}が引っぱって、"
   end
 end
 
 character2 = Grand_daughter.new("おじいさん","おばあさん","まごむすめ","やっぱり")
+character2.call
 character2.grandpa
 character2.grandma
 character2.didnot
@@ -191,12 +199,16 @@ class Dog < Grand_daughter
    super(first,second,third,but)
    self.forth = forth
  end
+ def call
+    puts "#{third}は#{forth}をよんできました。"
+  end
  def grand_daughter
-   puts "#{third}を#{forth}を引っぱって、"
+   puts "#{third}を#{forth}が引っぱって、"
  end
 end
 
 character3 = Dog.new("おじいさん","おばあさん","まごむすめ","犬","まだまだ")
+character3.call
 character3.grandpa
 character3.grandma
 character3.grand_daughter
@@ -213,7 +225,9 @@ class Cat < Dog
  def initialize(first,second,third,forth,fifth,but)
    super(first,second,third,forth,but)
    self.fifth = fifth
-   
+   def call
+    puts "#{forth}は#{fifth}をよんできました。"
+  end
    def dog
      puts "#{forth}を#{fifth}が引っぱって、"
    end
@@ -221,11 +235,44 @@ class Cat < Dog
 end
 
 character4 = Cat.new("おじいさん","おばあさん","まごむすめ","犬","ねこ","なかなか")
+character4.call
 character4.grandpa
 character4.grandma
 character4.grand_daughter
 character4.dog
 character4.didnot
+
+class Mouse < Cat
+ attr_accessor :first
+ attr_accessor :second
+ attr_accessor :third
+ attr_accessor :forth
+ attr_accessor :fifth
+ attr_accessor :sixth
+
+ def initialize(first,second,third,forth,fifth,sixth,but)
+  super(first,second,third,forth,fifth,but)
+  self.sixth = sixth
+ end
+ def call
+    puts "#{fifth}は#{sixth}をよんできました。"
+  end
+ def cat
+   puts "#{fifth}を#{sixth}が引っぱって、"
+ end
+ def didnot
+    puts "「うんとこしょ、どっこいしょ」「うんとこしょ、どっこいしょ」（すっぽーん！）とうとう、かぶは抜けました。"
+ end
+end
+
+character5 = Mouse.new("おじいさん","おばあさん","まごむすめ","犬","ねこ","ねずみ","-")
+character5.call
+character5.grandpa
+character5.grandma
+character5.grand_daughter
+character5.dog
+character5.cat
+character5.didnot
 
 
 #メンタリング3/6
